@@ -1,0 +1,32 @@
+
+// Les listes sont différentes des tableaux. Nous n'avons pas encore de bibliothèque pour les tableaux.
+
+// Voici comment déclarer une liste vide.
+var liste = []  // Simple !
+
+// Je peux également afficher la liste de cette manière.
+println(liste)
+
+// Avec aussi des valeurs.
+var autreListe = [1, 2, 3, liste]
+println(autreListe)
+
+// Je peux aussi accéder à un élément de la liste.
+println(autreListe[1])
+
+// Je peux ajouter un élément à la liste aussi.
+autreListe.append("je suis une chaine de caractère")
+liste.append(90)  // REMARQUE : Remarquez que j'ai ajouté dans la première liste.
+autreListe[3].append("1")  // J'ajoute une chaîne dans la première liste à partir de l'autre liste.
+println(autreListe)
+
+// Définition d'une fonction qui ajoute une chaîne à une liste.
+func AddStr(liste) {
+    liste.append("John Doe")
+}
+
+// Je peux passer une liste en fonction, c'est également un type. Ici, la liste n'est pas copiée ;
+// l'argument fait référence à la liste.
+AddStr(autreListe)
+
+println(autreListe)

@@ -1,0 +1,5 @@
+
+
+
+// Affiche le message "Hi Mom !" sur la sortie standard.
+println("Hi Mom !")  // Nul besoin d'importer plusieurs modules, simplement "print" suffit :)

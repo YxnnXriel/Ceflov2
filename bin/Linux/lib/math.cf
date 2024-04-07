@@ -1,0 +1,28 @@
+from @"./lib/math/libmath.so" import [mathPi,mathLog10]
+
+
+export::[mathLog10,mathPi] 
+
+/*
+*   export pour lorsqu'un module (fonction, structure, variable)
+*   depend d'une autre.
+*   
+*   dans notre cas ici Math depend de mathPi et mathLog10
+*   il est défini dans la structure DefMath
+*/
+
+struct DefMath {
+    var Pi;
+    var x;
+
+    func __init__(self){
+        self.x = 0;
+        self.Pi = @float(mathPi())
+    }
+
+    func log10(self,value){
+        return mathLog10(value)
+    }
+}
+
+var Math = new DefMath()

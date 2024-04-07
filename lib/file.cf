@@ -1,0 +1,98 @@
+from @"./lib/file/libfile.so" import [
+        file_fopen,file_fclose,
+        file_stdin,file_stdout,
+        file_fprintf,
+        file_fgetline
+]
+
+export::[
+    file_fopen,file_fclose,
+    file_stdin,file_stdout,
+    file_fprintf,
+    file_fgetline
+]
+
+struct STD{
+    var stdout = file_stdout()
+    var stdin = file_stdin();
+}
+
+
+struct FILE {
+    var fic;
+    var file;
+    var mod;
+
+    func __init__(self){
+        self.mod = 0;
+        self.file = 0;
+        self.fic = 0;
+    }
+
+    func __init__(self,file){
+        self.mod = 0;
+        self.file = file
+        self.fic = 0
+    }
+
+    func __init__(self,file,mod){
+        self.mod = mod
+        self.file = file
+        self.fopen()
+    }
+    
+    func setFile(self,file,mod){
+        self.file = file
+        self.mod = mod
+    }
+
+    func fopen(self){
+        self.fic = file_fopen(self.file,self.mod)
+    }
+
+    func fclose(self){
+        file_fclose(self.fic)
+    }
+
+    func getline(self){
+        return file_fgetline(self.fic)
+    }
+
+    func fprintf(self,value){
+        file_fprintf(self.fic,value)
+    }
+}
+
+
+
+
+
+
+struct Scanner{
+    var x;
+    var result;
+    func __init__(self){
+        self.x = 0
+        self.result = none
+    }
+
+    func getInt(self,fmt){
+        self.result = nextInt(format(fmt))
+        self.x += 1;
+        return self.result
+    }
+
+    func getStr(self,fmt){
+        self.result = input(format(fmt))
+        self.x +=1
+        return self.result
+    }
+
+    func __str__(self){
+        return self.result
+    }
+
+    func Succes(self){
+        return self.x
+    }
+}
